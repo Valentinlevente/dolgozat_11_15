@@ -11,7 +11,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     adatBetoltes();
 
+    function torol (id){
+        let parent = document.getElementById(id);
+        parent.innerHTML = "";
+    }
+
     function mindBetolt(quotesLista){
+        torol("all");
         let szulo = document.getElementById("all");
 
         quotesLista = quotesLista.sort((a, b) => a.author.localeCompare(b.author));
@@ -25,7 +31,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
 
     function bold(quotesLista){
-        
+        torol("boldList");
         for(let e of quotesLista){
             let li = document.createElement("li");
             let szulo = document.getElementById("boldList")
@@ -40,28 +46,38 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
             szulo.appendChild(li);
 
-
-            
-
-
-
-
         }
         
-        
-        
-        
-        
-        let quote = "The alma nem esett messze the fatol!";
-        let quotes = quote.split(" ");
-        console.log(quotes);
-        
-        
+    }
 
-        
-
+    function nums(quotesLista){
+        torol("numskiir");
+        let numsList = [];
+        let kiir = document.getElementById("numskiir");
+        for(let e of quotesLista){
+            numsList.push(e.quote.length);
+        }
+        let text = numsList.join(", ");
+        kiir.innerHTML = text;
+        /*for(let e of numsList){
+            kiir.innerHTML += e;
+        }*/
 
     }
+
+    function szerzo(quotesLista){
+        let szerzoNev = document.getElementById("szerzoNev").value;
+        let counter = 0;
+
+        for(let e of quotesLista){
+            if(e.author == szerzoNev){
+                counter++;
+            }
+        }
+
+        document.getElementById("szerzoEredmeny").value = counter;
+    }
+
 
     document.getElementById("megjelenit").addEventListener("click", ()=>{
         mindBetolt(eredmeny.quotes);
@@ -69,6 +85,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     document.getElementById("bold").addEventListener("click", ()=>{
         bold(eredmeny.quotes);
+    })
+
+    document.getElementById("nums").addEventListener("click", ()=>{
+        nums(eredmeny.quotes);
+    })
+
+    document.getElementById("szerzo").addEventListener("click", ()=>{
+        szerzo(eredmeny.quotes);
     })
 
 })
