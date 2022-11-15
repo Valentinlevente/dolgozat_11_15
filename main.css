@@ -1,1 +1,13 @@
-
+#container{
+    width: 60%;
+    background-color: #d7eefc;
+    padding: 10px;
+    margin: 0 auto;
+}
+body{
+    background-image: url(b82236e2541653bd4713.jpg);    
+    background-repeat: repeat;
+}
+h1{
+    text-align: center;
+}
