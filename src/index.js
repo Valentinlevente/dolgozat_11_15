@@ -24,8 +24,51 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
     }
 
+    function bold(quotesLista){
+        
+        for(let e of quotesLista){
+            let li = document.createElement("li");
+            let szulo = document.getElementById("boldList")
+            
+            let quotes = e.quote.split(" ");
+            for(let i = 0; i < quotes.length; i++){
+                if(quotes[i] == "the" || quotes[i] == "The"){
+                    quotes[i] = quotes[i].bold();
+                }
+                li.innerHTML += quotes[i] + " ";
+            }
+
+            szulo.appendChild(li);
+
+
+            
+
+
+
+
+        }
+        
+        
+        
+        
+        
+        let quote = "The alma nem esett messze the fatol!";
+        let quotes = quote.split(" ");
+        console.log(quotes);
+        
+        
+
+        
+
+
+    }
+
     document.getElementById("megjelenit").addEventListener("click", ()=>{
         mindBetolt(eredmeny.quotes);
+    })
+
+    document.getElementById("bold").addEventListener("click", ()=>{
+        bold(eredmeny.quotes);
     })
 
 })
